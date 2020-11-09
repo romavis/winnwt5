@@ -31,7 +31,6 @@
     #include "modem_win.h"
 #else
     #include "modem_lin.h"
-    #error !!!
 #endif
 
 
