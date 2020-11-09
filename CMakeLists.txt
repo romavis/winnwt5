@@ -37,7 +37,6 @@ set(NWT_HEADERS
     firmwaredlg.h
     BugReport.h
     Attenuator.h
-    build.h
     modem.hpp
 )
 # Resources
