@@ -63,10 +63,9 @@
 #include <qglobal.h>
 
 #ifdef Q_OS_WIN
-     #include <modem_win.h>
+     #include "modem_win.h"
 #else
-     #include <modem_lin.h>
-     #error NOT_WIN!!!
+     #include "modem_lin.h"
 #endif
 
 

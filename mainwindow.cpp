@@ -394,9 +394,9 @@ void MainWindow::readSettings()
   mTooltip->setChecked(settings.value("tooltip", true).toBool());
   nwtMainObj->readSettings();
   if(size.rwidth() < 750){
-    bbreite = TRUE;
+    bbreite = true;
   }else{
-    bbreite = FALSE;
+    bbreite = false;
   }
 }
 
@@ -405,10 +405,10 @@ void MainWindow::setWidth()
   int breite = this->width();
   int hoehe = this->height();
   if(bbreite){
-    bbreite = FALSE;
+    bbreite = false;
     breite = 750;
   }else{
-    bbreite = TRUE;
+    bbreite = true;
     breite = 500;
   }
   resize(breite, hoehe);

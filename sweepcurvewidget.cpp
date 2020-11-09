@@ -98,7 +98,7 @@ SaveCurveDlg::SaveCurveDlg(QWidget* parent, Qt::WindowFlags f): QDialog(parent, 
   
   ginfo = new QGroupBox(tr("Place Info"), this);
   ginfo->setGeometry(10,50,250,150);
-  ginfo->setEnabled(FALSE);
+  ginfo->setEnabled(false);
 
   spfontsize = new QSpinBox(ginfo);
   spfontsize->setGeometry(150,20,60,30);
@@ -173,11 +173,11 @@ void SaveCurveDlg::changeypos(int y)
 void SaveCurveDlg::changesetboxinfo()
 {
   if(checkboxinfo->checkState() == Qt::Checked){
-    ginfo->setEnabled(TRUE);
-    bbildinfo.infoanzeigen = TRUE;
+    ginfo->setEnabled(true);
+    bbildinfo.infoanzeigen = true;
   }else{
-    ginfo->setEnabled(FALSE);
-    bbildinfo.infoanzeigen = FALSE;
+    ginfo->setEnabled(false);
+    bbildinfo.infoanzeigen = false;
   }
   emit pixauffrischen(bbildinfo);
 }
@@ -213,10 +213,10 @@ SweepCurveWidget::SweepCurveWidget(QWidget *parent) : QWidget(parent)
     mouseposy[cursorix] = 0;
   }
   
-  banfang = FALSE;
-  bende = FALSE;
-  blupeplus = FALSE;
-  blupeminus = FALSE;
+  banfang = false;
+  bende = false;
+  blupeplus = false;
+  blupeminus = false;
   mousefrequenz = 0.0;
  /*
   menmouse = new Q3PopupMenu(this);
@@ -260,23 +260,23 @@ SweepCurveWidget::SweepCurveWidget(QWidget *parent) : QWidget(parent)
   aberechnen = new QAction(tr("Cursor-frequency to Calculate",""), popupmenu);
   connect(aberechnen, SIGNAL(triggered()), this, SLOT(setCalculation()));
   popupmenu->addAction(aberechnen);
-  akursor_clr->setEnabled(FALSE);
-  akursor_clr_all->setEnabled(FALSE);
-  afrequenzanfang->setEnabled(FALSE);
-  afrequenzende->setEnabled(FALSE);
-  akabellaenge->setEnabled(FALSE);
-  akabeldaten->setEnabled(FALSE);
-  aberechnen->setEnabled(FALSE);
+  akursor_clr->setEnabled(false);
+  akursor_clr_all->setEnabled(false);
+  afrequenzanfang->setEnabled(false);
+  afrequenzende->setEnabled(false);
+  akabellaenge->setEnabled(false);
+  akabeldaten->setEnabled(false);
+  aberechnen->setEnabled(false);
   
   setBackgroundRole(QPalette::Dark);
-  setAutoFillBackground(TRUE);
+  setAutoFillBackground(true);
   setCursor(Qt::CrossCursor);
-  kurve1.mess.daten_enable = FALSE;
-  kurve2.mess.daten_enable = FALSE;
-  kurve3.mess.daten_enable = FALSE;
-  kurve4.mess.daten_enable = FALSE;
-  sweepData.bhintergrund = FALSE;
-  bresize = TRUE;
+  kurve1.mess.daten_enable = false;
+  kurve2.mess.daten_enable = false;
+  kurve3.mess.daten_enable = false;
+  kurve4.mess.daten_enable = false;
+  sweepData.bhintergrund = false;
+  bresize = true;
   //obere Anzeige der LOG_Y-Achse
   ymax=10.0;//dB
   //obere Anzeige der LOG_Y-Achse
@@ -284,7 +284,7 @@ SweepCurveWidget::SweepCurveWidget(QWidget *parent) : QWidget(parent)
   //obere Anzeige der LOG_Y-Achse
   ydisplayteilung_log= (ymax - ymin) / 10.0;
   //fuer Stringliste Quarzdaten
-  speichern = FALSE; 
+  speichern = false; 
 }
 
 SweepCurveWidget::~SweepCurveWidget()
@@ -434,7 +434,7 @@ void SweepCurveWidget::wSetFrqBegin()
   #ifdef PAINTGRAF_DEBUG
     qDebug("WidgetWobbeln::wSetFrqBegin()");
   #endif
-  banfang = TRUE;
+  banfang = true;
   refreshCurve();
 //  menmouse->hide();
 }
@@ -444,7 +444,7 @@ void SweepCurveWidget::wSetFrqEnd()
   #ifdef PAINTGRAF_DEBUG
     qDebug("WidgetWobbeln::wSetFrqEnd()");
   #endif
-  bende = TRUE;
+  bende = true;
   refreshCurve();
 //  menmouse->hide();
 }
@@ -454,7 +454,7 @@ void SweepCurveWidget::setCalculation()
   #ifdef PAINTGRAF_DEBUG
     qDebug("WidgetWobbeln::setCalculation()");
   #endif
-  bberechnung = TRUE;
+  bberechnung = true;
   refreshCurve();
 //  menmouse->hide();
 }
@@ -479,37 +479,37 @@ void SweepCurveWidget::mousePressEvent(QMouseEvent * e)
   #ifdef PAINTGRAF_DEBUG
     qDebug("WidgetWobbeln::mousePressEvent()");
   #endif
-  bnomove = FALSE;
+  bnomove = false;
   if(sweepData.mess.daten_enable){
     if(e->button() == Qt::LeftButton){
       mouseposx[cursorix] = e->x();
       mouseposy[cursorix] = e->y();
-      bnomove = TRUE;
+      bnomove = true;
     }
     if(e->button() == Qt::RightButton){
       if(mouseposx[cursorix] != 0){
-        akursor_clr->setEnabled(TRUE);
-//        akursor_clr_all->setEnabled(TRUE);
-        afrequenzanfang->setEnabled(TRUE);
-        afrequenzende->setEnabled(TRUE);
-        akabellaenge->setEnabled(TRUE);
-        akabeldaten->setEnabled(TRUE);
-        aberechnen->setEnabled(TRUE);
+        akursor_clr->setEnabled(true);
+//        akursor_clr_all->setEnabled(true);
+        afrequenzanfang->setEnabled(true);
+        afrequenzende->setEnabled(true);
+        akabellaenge->setEnabled(true);
+        akabeldaten->setEnabled(true);
+        aberechnen->setEnabled(true);
       }else{
-        akursor_clr->setEnabled(FALSE);
-//        akursor_clr_all->setEnabled(FALSE);
-        afrequenzanfang->setEnabled(FALSE);
-        afrequenzende->setEnabled(FALSE);
-        akabellaenge->setEnabled(FALSE);
-        akabeldaten->setEnabled(FALSE);
-        aberechnen->setEnabled(FALSE);
+        akursor_clr->setEnabled(false);
+//        akursor_clr_all->setEnabled(false);
+        afrequenzanfang->setEnabled(false);
+        afrequenzende->setEnabled(false);
+        akabellaenge->setEnabled(false);
+        akabeldaten->setEnabled(false);
+        aberechnen->setEnabled(false);
       }
       popupmenu->popup(QCursor::pos());
-      akursor_clr_all->setEnabled(FALSE);
+      akursor_clr_all->setEnabled(false);
       // Ist noch ein Kursor aktiv ?
       for(int i=0; i<5; i++){
         if(mouseposx[i] != 0){
-          akursor_clr_all->setEnabled(TRUE);
+          akursor_clr_all->setEnabled(true);
           break;
         }
       }
@@ -671,7 +671,7 @@ double SweepCurveWidget::getSWRCallibrateWorthK2(double afrequenz)
 void SweepCurveWidget::setParameterPixmap()
 {
   QSize pixsize;
-  bool drawenable = FALSE;
+  bool drawenable = false;
   #ifdef PAINTGRAF_DEBUG
     qDebug("WidgetWobbeln::setParameterPixmap()");
   #endif
@@ -720,7 +720,7 @@ void SweepCurveWidget::setParameterPixmap()
         double hd = 0.9;
         double h5db;
         int r,g,b,a;
-        bool boben = TRUE, bunten = TRUE;
+        bool boben = true, bunten = true;
   
         //Get original size
         QRect rect = this->rect();
@@ -753,9 +753,9 @@ void SweepCurveWidget::setParameterPixmap()
         //h4 Zeile vor der Beschriftung unten
         h4 = h5 - upperBorder;
         //Test ob obere Abdunklung groesser 5 dB eingeblendet werden soll
-        if(h2 <= h1)boben = FALSE;
+        if(h2 <= h1)boben = false;
         //Test ob untere Abdunklung ab -60 dB eingeblendet werden soll
-        if(h3 >= h4)bunten = FALSE;
+        if(h3 >= h4)bunten = false;
         //Abdunklung einstellen
         QColor chd = sweepData.colorhintergrund;
         chd.getRgb(&r,&g,&b,&a);
@@ -796,7 +796,7 @@ void SweepCurveWidget::refreshCurve()
   pix = pix1;
   p.begin(&pix);
   //and curve draw
-  //wobbeldaten.bhintergrund = FALSE;
+  //wobbeldaten.bhintergrund = false;
   drawCurve(&p);
   p.end();
   //und anzeigen
@@ -858,7 +858,7 @@ void SweepCurveWidget::resizeEvent(QResizeEvent*)
     qDebug("WidgetWobbeln::resizeEvent()");
   #endif
   //at PaintEventHandler sign again
-  bresize = TRUE;
+  bresize = true;
   //Curve sign new
   refreshPixmap();
 }
@@ -887,7 +887,7 @@ void SweepCurveWidget::drawGrid(QPainter *p)
   double yzeichenfaktor_lin = 0.0;
   QString xRasterStr, s, qstr;
   bool zeilenwechsel;
-  bool boolrot = FALSE;
+  bool boolrot = false;
   efrqbereich frqbereich;
   QPen penblacksolid = QPen( Qt::black, 0, Qt::SolidLine); 
   QPen pendarkgreensolid = QPen( Qt::darkGreen, 0, Qt::SolidLine);
@@ -905,7 +905,7 @@ void SweepCurveWidget::drawGrid(QPainter *p)
   
   ydisplayteilung_log = ymax - ymin;
   display_shift = sweepData.display_shift / -10;
-  if(display_shift != 0)boolrot = TRUE;
+  if(display_shift != 0)boolrot = true;
   yswrteilung = sweepData.swraufloesung;//Y-Teilung bei SWR
   breite = this->rect().width() - widthBorder * 2;
 //  qDebug("breite %i", breite);
@@ -991,7 +991,7 @@ void SweepCurveWidget::drawGrid(QPainter *p)
         //py1 ist die Pixelanzahl pro 10dB
         py1 = double(hoehe) / (ydisplayteilung_log / 10.0);
         //Farbe einstellen abhaengig von SHIFT-Einstellung
-        if((sweepData.dbshift1 != 0.0) or (sweepData.dbshift2 != 0.0))boolrot = TRUE;
+        if((sweepData.dbshift1 != 0.0) or (sweepData.dbshift2 != 0.0))boolrot = true;
         if(boolrot){
           p->setPen( penredsolid );
         }else{
@@ -1237,7 +1237,7 @@ void SweepCurveWidget::drawGrid(QPainter *p)
   if(xRaster < wxanfang)i = int(round( wxanfang / xRaster)) + 1;
   //Beschriftung x-Achse + Linien
   //erste Beschriftung oben
-  zeilenwechsel = TRUE;
+  zeilenwechsel = true;
   while( (xRaster * i) < wxende){
     x = int(round((((xRaster * i) - wxanfang) / (wxende - wxanfang))* breite) - 1 + widthBorder);
     //je nach laenge des Strings den Text etwas nach links schieben
@@ -1348,10 +1348,10 @@ void SweepCurveWidget::drawGrid(QPainter *p)
     }
     if(zeilenwechsel){
       p->drawText(x-xshift, 28, s);
-      zeilenwechsel = FALSE;
+      zeilenwechsel = false;
     }else{  
       p->drawText(x-xshift, 13, s);
-      zeilenwechsel = TRUE;
+      zeilenwechsel = true;
     }
     p->setPen(penlightgraydot);
     p->drawLine(x, upperBorder, x, hoehe + upperBorder);
@@ -1639,7 +1639,7 @@ void SweepCurveWidget::drawCurve(QPainter *p)
   double yzeichenshift_lin = 0.0;
   double bx;
   bool bkurvezeichnen;
-  bool bmouse = TRUE;
+  bool bmouse = true;
   
   double db3xai = 0.0;
   double db3xbi = 0.0;
@@ -1778,13 +1778,13 @@ void SweepCurveWidget::drawCurve(QPainter *p)
           p->setPen( sweepData.penkanal1 );
           kurve.clear();
           for(i=0; i < sweepData.cntpoints; i++){
-            bkurvezeichnen = TRUE;
+            bkurvezeichnen = true;
             x = int(round(i * xSchritt) + widthBorder) + (int)xAnfang;
-            if( x < widthBorder)bkurvezeichnen = FALSE;
-            if( x > (widthBorder + breite))bkurvezeichnen = FALSE;
+            if( x < widthBorder)bkurvezeichnen = false;
+            if( x > (widthBorder + breite))bkurvezeichnen = false;
             //x1 = int(round((i+1) * xSchritt) + LinkerRand) + (int)xAnfang;
-            //if( x1 < LinkerRand)bkurvezeichnen = FALSE;
-            //if( x1 > (LinkerRand + breite))bkurvezeichnen = FALSE;
+            //if( x1 < LinkerRand)bkurvezeichnen = false;
+            //if( x1 > (LinkerRand + breite))bkurvezeichnen = false;
             //Neue Berechnung ab V3.05
             if(sweepData.linear1){
               //dB ausrechnen LINEAR
@@ -1953,13 +1953,13 @@ void SweepCurveWidget::drawCurve(QPainter *p)
             if(y < upperBorder)y = upperBorder;
             //if(y1 > (hoehe + ObererRand))y1 = hoehe + ObererRand;
             //if(y1 < ObererRand)y1 = ObererRand;
-            bkurvezeichnen = TRUE;
+            bkurvezeichnen = true;
             x = int(round(i * xSchritt) + widthBorder) + (int)xAnfang;
-            if( x < widthBorder)bkurvezeichnen = FALSE;
-            if( x > (widthBorder + breite))bkurvezeichnen = FALSE;
+            if( x < widthBorder)bkurvezeichnen = false;
+            if( x > (widthBorder + breite))bkurvezeichnen = false;
             //x1 = int(round((i+1) * xSchritt) + LinkerRand) + (int)xAnfang;
-            //if( x1 < LinkerRand)bkurvezeichnen = FALSE;
-            //if( x1 > (LinkerRand + breite))bkurvezeichnen = FALSE;
+            //if( x1 < LinkerRand)bkurvezeichnen = false;
+            //if( x1 > (LinkerRand + breite))bkurvezeichnen = false;
             if(bkurvezeichnen)kurve.append(QPoint(x,y));
             if(sweepData.linear2){
               py1 = messk2 * y2faktor + y2shift;
@@ -2065,25 +2065,25 @@ void SweepCurveWidget::drawCurve(QPainter *p)
               px1 = (kxm2[cursorix] * sweepData.schrittfrequenz ) + afrequenz;
             }  
             if(banfang){ //Uebergabe aus dem Mausmenue
-              //qDebug("banfang = FALSE;");
-              banfang = FALSE;
+              //qDebug("banfang = false;");
+              banfang = false;
               //neue Anfangsfrequenz an nwtlinux.cpp uebermittlen
               emit writeBegin(px1);
             }
             if(bende){ //Uebergabe aus dem Mausmenue
-              bende = FALSE;
+              bende = false;
               //neue Endfrequenz an nwtlinux.cpp uebermittlen
               emit writeEnd(px1);
             }
             if(bberechnung){ //Uebergabe aus dem Mausmenue
-              bberechnung = FALSE;
+              bberechnung = false;
               //Berechnungsfrequenz an nwtlinux.cpp uebermittlen
               emit writeCalculation(px1);
             }
             mousefrequenz = px1;
           }
           for(k=0;k<5;k++){
-            bmouse = TRUE;
+            bmouse = true;
             if(k!=0)bmouse = !sweepData.mousesperre;
             if((mouseposx[k] != 0) && (mouseposy[k] != 0) && bmouse ){ //Cursorkreuz aktiv
               qstr = tr("Cursor","");
@@ -2943,14 +2943,14 @@ void SweepCurveWidget::drawCurve(QPainter *p)
         }else{
           p->setPen( sweepData.penkanal1 );
         }
-        bkurvezeichnen = TRUE;
+        bkurvezeichnen = true;
         x = int(round(i * xSchritt) + widthBorder) + (int)xAnfang;
-        if( x < widthBorder)bkurvezeichnen = FALSE;
-        if( x > (widthBorder + breite))bkurvezeichnen = FALSE;
+        if( x < widthBorder)bkurvezeichnen = false;
+        if( x > (widthBorder + breite))bkurvezeichnen = false;
         /*
         x1 = int(round((i+1) * xSchritt) + LinkerRand) + (int)xAnfang;
-        if( x1 < LinkerRand)bkurvezeichnen = FALSE;
-        if( x1 > (LinkerRand + breite))bkurvezeichnen = FALSE;
+        if( x1 < LinkerRand)bkurvezeichnen = false;
+        if( x1 > (LinkerRand + breite))bkurvezeichnen = false;
         */
         j1 = i - 1;
         j2 = i;
@@ -3271,7 +3271,7 @@ void SweepCurveWidget::drawCurve(QPainter *p)
           mousefrequenz = (kxm1[cursorix] * sweepData.schrittfrequenz ) + sweepData.anfangsfrequenz;
         }
         for(k=0;k<5;k++){
-          bmouse = TRUE;
+          bmouse = true;
           if(k!=0)bmouse = !sweepData.mousesperre;
           if((mouseposx[k] != 0) && (mouseposy[k] != 0) && bmouse ){ //Cursorkreuz aktiv
             qstr = tr("Cursor","");
@@ -3280,18 +3280,18 @@ void SweepCurveWidget::drawCurve(QPainter *p)
             if(bnomove)emit multiEditInsert(s);
             px1 = (kxm1[k] * sweepData.schrittfrequenz ) + sweepData.anfangsfrequenz;
             if(banfang){ //Uebergabe aus dem Mausmenue
-              //qDebug("banfang = FALSE;");
-              banfang = FALSE;
+              //qDebug("banfang = false;");
+              banfang = false;
               //neue Anfangsfrequenz an nwtlinux.cpp uebermittlen
               emit writeBegin(px1);
             }
             if(bende){ //Uebergabe aus dem Mausmenue
-              bende = FALSE;
+              bende = false;
               //neue Endfrequenz an nwtlinux.cpp uebermittlen
               emit writeEnd(px1);
             }
             if(bberechnung){ //Uebergabe aus dem Mausmenue
-              bberechnung = FALSE;
+              bberechnung = false;
               //neue Endfrequenz an nwtlinux.cpp uebermittlen
               emit writeCalculation(px1);
             }
@@ -3915,11 +3915,11 @@ void SweepCurveWidget::keyPressEvent(QKeyEvent *event){
     case Qt::Key_Space: if(sweepData.mess.daten_enable){ mouseposx[cursorix] = (this->rect().width()) / 2;} emit MagnifyEqual(); break;
     case Qt::Key_Return:
       if(sweepData.mess.daten_enable){
-        bnomove = FALSE;
+        bnomove = false;
         if(sweepData.mess.daten_enable){
           mouseposx[cursorix] = (this->rect().width()) / 2;
           mouseposy[cursorix] = (this->rect().height()) / 2;
-          bnomove = TRUE;
+          bnomove = true;
           if(!sweepData.mousesperre){
             refreshPixmap();
             repaint();
@@ -3963,7 +3963,7 @@ void SweepCurveWidget::CreateQuarzFile()
   if(!s.isNull()){
     if((s.indexOf(".")== -1)) s += ".csv";
     fname = s;
-    speichern = TRUE;
+    speichern = true;
   }
 }
 
