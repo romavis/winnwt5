@@ -80,7 +80,7 @@ Nwt7MainClass::Nwt7MainClass(QWidget *parent) : QTabWidget(parent)
   //  picmodem = new QextSerialPort("/dev/ttyS0");
   //  delete picmodem;
   fwportbalt = 0;
-  picmodem = new Modem();
+  picmodem = Modem::GetModem();
   //if(!ttyopen(1)) return;
   //QObject::connect( picmodem, SIGNAL(setTtyText(QString)), this, SLOT(setWindowTitle(QString)));
   bttyOpen = false;
@@ -1425,10 +1425,11 @@ void Nwt7MainClass::configLoad(const QString &filename){
   sw305 = false;
   nwt7configfile.open(filename);
 #ifdef Q_OS_WIN
-  currentdata.str_tty = nwt7configfile.readString("serielle_schnittstelle", "COM1");
+  const char* default_port = "COM1";
 #else
-  wgrunddaten.str_tty = nwt7configfile.readString("serielle_schnittstelle", "/dev/ttyS0");
+  const char* default_port = "/dev/ttyS0";
 #endif
+  currentdata.str_tty = nwt7configfile.readString("serielle_schnittstelle", default_port);
   ttyOpen(0); //Sobol A.E.
   editanfang->setText(nwt7configfile.readString("editanfang", "1000000"));
   editende->setText(nwt7configfile.readString("editende", "150000000"));
