@@ -62,12 +62,7 @@
 #include <string.h>
 #include <qglobal.h>
 
-#ifdef Q_OS_WIN
-     #include <modem_win.h>
-#else
-     #include <modem_lin.h>
-     #error NOT_WIN!!!
-#endif
+#include "modem.hpp"
 
 
 #include "sweepcurvewidget.h"

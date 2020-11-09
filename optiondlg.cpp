@@ -38,12 +38,7 @@
 #include "optiondlg.h"
 #include "sweepcurvewidget.h"
 
-#ifdef Q_OS_WIN
-    #include "modem_win.h"
-#else
-    #include "modem_lin.h"
-    #error !!!
-#endif
+#include "modem.hpp"
 
 
 //#####################################################################################
@@ -140,7 +135,7 @@ OptionDlg::OptionDlg(QWidget* parent, Qt::WindowFlags f): QDialog(parent, f)
     ctty->addItem(qs);
   }
 #else
-  ctty->setEditable(TRUE);
+  ctty->setEditable(true);
   ctty->addItem(schnittstelle1);
   ctty->addItem(schnittstelle2);
   ctty->addItem(schnittstelle3);
@@ -732,32 +727,32 @@ void OptionDlg::setdaten(TBaseData agrunddaten){
   boxschrittkorr->setChecked(ogrunddaten.bschrittkorr);
   spinpfsize->setValue(ogrunddaten.pfsize);
   if(ogrunddaten.fwWrong){
-    boxsastatus->setEnabled(FALSE);
-    boxschrittkorr->setEnabled(FALSE);
-    eabsolut1->setEnabled(FALSE);
-    labelabsolut1->setEnabled(FALSE);
-    eabsolut2->setEnabled(FALSE);
-    labelabsolut2->setEnabled(FALSE);
-    eabsolut3->setEnabled(FALSE);
-    labelabsolut3->setEnabled(FALSE);
-    eb300->setEnabled(FALSE);
-    labelb300->setEnabled(FALSE);
-    eb7k->setEnabled(FALSE);
-    labelb7k->setEnabled(FALSE);
-    eb30k->setEnabled(FALSE);
-    labelb30k->setEnabled(FALSE);
+    boxsastatus->setEnabled(false);
+    boxschrittkorr->setEnabled(false);
+    eabsolut1->setEnabled(false);
+    labelabsolut1->setEnabled(false);
+    eabsolut2->setEnabled(false);
+    labelabsolut2->setEnabled(false);
+    eabsolut3->setEnabled(false);
+    labelabsolut3->setEnabled(false);
+    eb300->setEnabled(false);
+    labelb300->setEnabled(false);
+    eb7k->setEnabled(false);
+    labelb7k->setEnabled(false);
+    eb30k->setEnabled(false);
+    labelb30k->setEnabled(false);
   }else{
     if(!boxsastatus->isChecked()){
-      eb300->setEnabled(FALSE);
-      labelb300->setEnabled(FALSE);
-      eb7k->setEnabled(FALSE);
-      labelb7k->setEnabled(FALSE);
-      eb30k->setEnabled(FALSE);
-      labelb30k->setEnabled(FALSE);
+      eb300->setEnabled(false);
+      labelb300->setEnabled(false);
+      eb7k->setEnabled(false);
+      labelb7k->setEnabled(false);
+      eb30k->setEnabled(false);
+      labelb30k->setEnabled(false);
     }
     if(!boxschrittkorr->isChecked()){
-      esaminschritte->setEnabled(FALSE);
-      labelsaminschritte->setEnabled(FALSE);
+      esaminschritte->setEnabled(false);
+      labelsaminschritte->setEnabled(false);
     }
   }
 };
@@ -1110,10 +1105,10 @@ void OptionDlg::setStandart(){
   egsab7kmin->setText("1250");
   egsab30kmax->setText("10000");
   egsab30kmin->setText("5000");
-  savdbm->setChecked(TRUE);
-  savuv->setChecked(FALSE);
-  savwatt->setChecked(FALSE);
-  savdbuv->setChecked(FALSE);
+  savdbm->setChecked(true);
+  savuv->setChecked(false);
+  savwatt->setChecked(false);
+  savdbuv->setChecked(false);
 }
 
 void OptionDlg::setColor1(){
@@ -1177,36 +1172,36 @@ void OptionDlg::edtAttenConfig_textChanged(const QString& newText)
 void OptionDlg::checkboxsastatus_checked(bool ok)
 {
   if(ok){
-    eb300->setEnabled(TRUE);
-    labelb300->setEnabled(TRUE);
-    eb7k->setEnabled(TRUE);
-    labelb7k->setEnabled(TRUE);
-    eb30k->setEnabled(TRUE);
-    labelb30k->setEnabled(TRUE);
+    eb300->setEnabled(true);
+    labelb300->setEnabled(true);
+    eb7k->setEnabled(true);
+    labelb7k->setEnabled(true);
+    eb30k->setEnabled(true);
+    labelb30k->setEnabled(true);
     if(boxschrittkorr->isChecked()){
-      esaminschritte->setEnabled(TRUE);
-      labelsaminschritte->setEnabled(TRUE);
+      esaminschritte->setEnabled(true);
+      labelsaminschritte->setEnabled(true);
     }
   }else{
-    eb300->setEnabled(FALSE);
-    labelb300->setEnabled(FALSE);
-    eb7k->setEnabled(FALSE);
-    labelb7k->setEnabled(FALSE);
-    eb30k->setEnabled(FALSE);
-    labelb30k->setEnabled(FALSE);
-    esaminschritte->setEnabled(FALSE);
-    labelsaminschritte->setEnabled(FALSE);
+    eb300->setEnabled(false);
+    labelb300->setEnabled(false);
+    eb7k->setEnabled(false);
+    labelb7k->setEnabled(false);
+    eb30k->setEnabled(false);
+    labelb30k->setEnabled(false);
+    esaminschritte->setEnabled(false);
+    labelsaminschritte->setEnabled(false);
   }
 }
 
 void OptionDlg::checkboxschrittkorr_checked(bool ok)
 {
   if(ok){
-    esaminschritte->setEnabled(TRUE);
-    labelsaminschritte->setEnabled(TRUE);
+    esaminschritte->setEnabled(true);
+    labelsaminschritte->setEnabled(true);
   }else{
-    esaminschritte->setEnabled(FALSE);
-    labelsaminschritte->setEnabled(FALSE);
+    esaminschritte->setEnabled(false);
+    labelsaminschritte->setEnabled(false);
   }
 }
 
@@ -1220,9 +1215,9 @@ TSavcalarray OptionDlg::getsavcal(){
 
 void OptionDlg::sacal(){
   int i, j, k, calix, calixalt;
-  bool v305 = FALSE;
-  //bool v404 = FALSE;
-  //bool v405 = FALSE;
+  bool v305 = false;
+  //bool v404 = false;
+  //bool v405 = false;
   QString zeile;
   QString qs;
   double faktor1, faktor2;
@@ -1261,15 +1256,15 @@ void OptionDlg::sacal(){
       QTextStream ts(&f);
       //erste Zeile lesen
       ts >> zeile;
-      if(zeile == "#V3.05")v305 = TRUE;
+      if(zeile == "#V3.05")v305 = true;
       if(zeile == "#V4.04"){
-        //v404 = TRUE;
-        v305 = TRUE;
+        //v404 = true;
+        v305 = true;
       }
       if(zeile == "#V4.05"){
-        //v405 = TRUE;
-        //v404 = TRUE;
-        v305 = TRUE;
+        //v405 = true;
+        //v404 = true;
+        v305 = true;
       }
       if(!v305){
         w.anfangsfrequenz = zeile.toLong(&ok);
@@ -1323,8 +1318,8 @@ void OptionDlg::sacal(){
       switch(i){
         case 0:
           w.eoperatemode = eGainSweep;
-          w.linear1 = FALSE;
-          w.linear2 = FALSE;
+          w.linear1 = false;
+          w.linear2 = false;
         break;
         case 1:  
         case 2:  

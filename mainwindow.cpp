@@ -32,7 +32,6 @@
 #include <QMessageBox>
 
 #include "mainwindow.h"
-#include "build.h"
 
 MainWindow::MainWindow()
 {
@@ -41,10 +40,9 @@ MainWindow::MainWindow()
 // Info Version usw. 
 
   infoversion = "5.1.0";
-  infobuildnum = QString::number(BUILDNO);
   QString infobuildate = QDate::currentDate().toString("dd/MM/yyyy");
   infotext = "<h2>WinNWT5 and LinNWT5</h2>"
-             "<p><B>Version:"+infoversion+"</B>    build:"+infobuildnum+"</p>"
+             "<p><B>Version:"+infoversion+"</B></p>"
              "Developed under Windows QT5.3.2</p>"
              "<p>WinNWT4 (c) Andreas Lindenau DL4JAL (2002-2013)<br>"
              "DL4JAL@darc.de<br>"
@@ -394,9 +392,9 @@ void MainWindow::readSettings()
   mTooltip->setChecked(settings.value("tooltip", true).toBool());
   nwtMainObj->readSettings();
   if(size.rwidth() < 750){
-    bbreite = TRUE;
+    bbreite = true;
   }else{
-    bbreite = FALSE;
+    bbreite = false;
   }
 }
 
@@ -405,10 +403,10 @@ void MainWindow::setWidth()
   int breite = this->width();
   int hoehe = this->height();
   if(bbreite){
-    bbreite = FALSE;
+    bbreite = false;
     breite = 750;
   }else{
-    bbreite = TRUE;
+    bbreite = true;
     breite = 500;
   }
   resize(breite, hoehe);
@@ -573,9 +571,9 @@ void MainWindow::setText(QString stty){
   #ifdef Q_OS_WIN
   qs = "WinNWT5";
   #else
-  qs = "LinNWT5";
+  qs = "WinNWT5";
   #endif
-  QString info = infoversion+"."+infobuildnum;
+  QString info = infoversion;
   setWindowTitle(tr("%1 - V.%2 - %3","Don't translate").arg(qs).arg(info).arg(stty));
 }
 

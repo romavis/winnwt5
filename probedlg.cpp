@@ -50,7 +50,7 @@ ProbeDlg::ProbeDlg(QWidget * parent, Qt::WindowFlags f): QDialog(parent, f)
 //  label->setText(tr("Datei","Sonde Dialog"));
 //  label->setAlignment(Qt::AlignRight);
 //  sname = new QLineEdit(gkopf);
-//  sname->setReadOnly(TRUE);
+//  sname->setReadOnly(true);
 //  sname->setGeometry(80,20,170,30);
   goffset = new QGroupBox(this);
   goffset->setGeometry(10,60,430,1020);

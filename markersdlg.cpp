@@ -36,12 +36,7 @@
 
 #include "configfile.h"
 #include "markersdlg.h"
-#ifdef Q_OS_WIN
-    #include "modem_win.h"
-#else
-    #include "modem_lin.h"
-    #error !!!
-#endif
+#include "modem.hpp"
 //#include "tooltipwkm.h"
 //#include "tooltipodlg.h"
 
@@ -119,32 +114,32 @@ MarkersDlg::MarkersDlg(QWidget * parent, Qt::WindowFlags f): QWidget(parent, f)
 
   save1 = new QPushButton(tr("Save",""), this);
   save1->setGeometry(180,65,60,25);
-  save1->setEnabled(FALSE);
+  save1->setEnabled(false);
   connect(save1, SIGNAL(clicked()), SLOT(ssave1()));
   
   save2 = new QPushButton(tr("Save",""), this);
   save2->setGeometry(240,65,60,25);
-  save2->setEnabled(FALSE);
+  save2->setEnabled(false);
   connect(save2, SIGNAL(clicked()), SLOT(ssave2()));
   
   save3 = new QPushButton(tr("Save",""), this);
   save3->setGeometry(300,65,60,25);
-  save3->setEnabled(FALSE);
+  save3->setEnabled(false);
   connect(save3, SIGNAL(clicked()), SLOT(ssave3()));
   
   save4 = new QPushButton(tr("Save",""), this);
   save4->setGeometry(360,65,60,25);
-  save4->setEnabled(FALSE);
+  save4->setEnabled(false);
   connect(save4, SIGNAL(clicked()), SLOT(ssave4()));
 
   save5 = new QPushButton(tr("Save",""), this);
   save5->setGeometry(420,65,60,25);
-  save5->setEnabled(FALSE);
+  save5->setEnabled(false);
   connect(save5, SIGNAL(clicked()), SLOT(ssave5()));
 
   save6 = new QPushButton(tr("Save",""), this);
   save6->setGeometry(480,65,60,25);
-  save6->setEnabled(FALSE);
+  save6->setEnabled(false);
   connect(save6, SIGNAL(clicked()), SLOT(ssave6()));
 
   uebernahme1 = new QPushButton(tr("Get",""), this);
@@ -215,87 +210,87 @@ MarkersDlg::MarkersDlg(QWidget * parent, Qt::WindowFlags f): QWidget(parent, f)
 
   checkboxk11 = new QCheckBox("1", this);
   checkboxk11->setGeometry(180,140,30,25);
-  checkboxk11->setEnabled(FALSE);
+  checkboxk11->setEnabled(false);
   connect(checkboxk11, SIGNAL(clicked()), this, SLOT(saktivk11()));
   checkboxk12 = new QCheckBox("2", this);
   checkboxk12->setGeometry(210,140,30,25);
-  checkboxk12->setEnabled(FALSE);
+  checkboxk12->setEnabled(false);
   connect(checkboxk12, SIGNAL(clicked()), this, SLOT(saktivk12()));
   
   checkboxk21 = new QCheckBox("1", this);
   checkboxk21->setGeometry(240,140,30,25);
-  checkboxk21->setEnabled(FALSE);
+  checkboxk21->setEnabled(false);
   connect(checkboxk21, SIGNAL(clicked()), this, SLOT(saktivk21()));
   checkboxk22 = new QCheckBox("2", this);
   checkboxk22->setGeometry(270,140,30,25);
-  checkboxk22->setEnabled(FALSE);
+  checkboxk22->setEnabled(false);
   connect(checkboxk22, SIGNAL(clicked()), this, SLOT(saktivk22()));
   
   checkboxk31 = new QCheckBox("1", this);
   checkboxk31->setGeometry(300,140,30,25);
-  checkboxk31->setEnabled(FALSE);
+  checkboxk31->setEnabled(false);
   connect(checkboxk31, SIGNAL(clicked()), this, SLOT(saktivk31()));
   checkboxk32 = new QCheckBox("2", this);
   checkboxk32->setGeometry(330,140,30,25);
-  checkboxk32->setEnabled(FALSE);
+  checkboxk32->setEnabled(false);
   connect(checkboxk32, SIGNAL(clicked()), this, SLOT(saktivk32()));
   
   checkboxk41 = new QCheckBox("1", this);
   checkboxk41->setGeometry(360,140,30,25);
-  checkboxk41->setEnabled(FALSE);
+  checkboxk41->setEnabled(false);
   connect(checkboxk41, SIGNAL(clicked()), this, SLOT(saktivk41()));
   checkboxk42 = new QCheckBox("2", this);
   checkboxk42->setGeometry(390,140,30,25);
-  checkboxk42->setEnabled(FALSE);
+  checkboxk42->setEnabled(false);
   connect(checkboxk42, SIGNAL(clicked()), this, SLOT(saktivk42()));
   
   checkboxk51 = new QCheckBox("1", this);
   checkboxk51->setGeometry(420,140,30,25);
-  checkboxk51->setEnabled(FALSE);
+  checkboxk51->setEnabled(false);
   connect(checkboxk51, SIGNAL(clicked()), this, SLOT(saktivk51()));
   checkboxk52 = new QCheckBox("2", this);
   checkboxk52->setGeometry(450,140,30,25);
-  checkboxk52->setEnabled(FALSE);
+  checkboxk52->setEnabled(false);
   connect(checkboxk52, SIGNAL(clicked()), this, SLOT(saktivk52()));
 
   checkboxk61 = new QCheckBox("1", this);
   checkboxk61->setGeometry(480,140,30,25);
-  checkboxk61->setEnabled(FALSE);
+  checkboxk61->setEnabled(false);
   connect(checkboxk61, SIGNAL(clicked()), this, SLOT(saktivk61()));
   checkboxk62 = new QCheckBox("2", this);
   checkboxk62->setGeometry(510,140,30,25);
-  checkboxk62->setEnabled(FALSE);
+  checkboxk62->setEnabled(false);
   connect(checkboxk62, SIGNAL(clicked()), this, SLOT(saktivk62()));
 
 
   aktiv1 = new QCheckBox(tr("Active",""), this);
   aktiv1->setGeometry(180,165,60,25);
-  aktiv1->setEnabled(FALSE);
+  aktiv1->setEnabled(false);
   connect(aktiv1, SIGNAL(clicked()), this, SLOT(saktiv1()));
   
   aktiv2 = new QCheckBox(tr("Active",""), this);
   aktiv2->setGeometry(240,165,60,25);
-  aktiv2->setEnabled(FALSE);
+  aktiv2->setEnabled(false);
   connect(aktiv2, SIGNAL(clicked()), SLOT(saktiv2()));
   
   aktiv3 = new QCheckBox(tr("Active",""), this);
   aktiv3->setGeometry(300,165,60,25);
-  aktiv3->setEnabled(FALSE);
+  aktiv3->setEnabled(false);
   connect(aktiv3, SIGNAL(clicked()), SLOT(saktiv3()));
   
   aktiv4 = new QCheckBox(tr("Active",""), this);
   aktiv4->setGeometry(360,165,60,25);
-  aktiv4->setEnabled(FALSE);
+  aktiv4->setEnabled(false);
   connect(aktiv4, SIGNAL(clicked()), SLOT(saktiv4()));
 
   aktiv5 = new QCheckBox(tr("Active",""), this);
   aktiv5->setGeometry(420,165,60,25);
-  aktiv5->setEnabled(FALSE);
+  aktiv5->setEnabled(false);
   connect(aktiv5, SIGNAL(clicked()), SLOT(saktiv5()));
 
   aktiv6 = new QCheckBox(tr("Active",""), this);
   aktiv6->setGeometry(480,165,60,25);
-  aktiv6->setEnabled(FALSE);
+  aktiv6->setEnabled(false);
   connect(aktiv6, SIGNAL(clicked()), SLOT(saktiv6()));
   
   labelkanal1 = new QLabel(tr("Graph 1 empty",""),this);
@@ -599,9 +594,9 @@ void MarkersDlg::save(int nr)
 void MarkersDlg::sopen1()
 {
   emit loadkurve(1);
-  checkboxk11->setChecked(FALSE);
-  checkboxk12->setChecked(FALSE);
-  aktiv1->setChecked(FALSE);
+  checkboxk11->setChecked(false);
+  checkboxk12->setChecked(false);
+  aktiv1->setChecked(false);
 };
 
 void MarkersDlg::sopen2()
@@ -897,9 +892,9 @@ void MarkersDlg::scolor62()
 void MarkersDlg::saktiv1()
 {
   if(aktiv1->isChecked()){
-    wobbeldaten1.mess.daten_enable = TRUE;
+    wobbeldaten1.mess.daten_enable = true;
   }else{
-    wobbeldaten1.mess.daten_enable = FALSE;
+    wobbeldaten1.mess.daten_enable = false;
   }
   //emit warneichkorr();
   emit wkmsendwobbel(wobbeldaten1);
@@ -908,9 +903,9 @@ void MarkersDlg::saktiv1()
 void MarkersDlg::saktiv2()
 {
   if(aktiv2->isChecked()){
-    wobbeldaten2.mess.daten_enable = TRUE;
+    wobbeldaten2.mess.daten_enable = true;
   }else{
-    wobbeldaten2.mess.daten_enable = FALSE;
+    wobbeldaten2.mess.daten_enable = false;
   }
   //emit warneichkorr();
   emit wkmsendwobbel(wobbeldaten2);
@@ -919,9 +914,9 @@ void MarkersDlg::saktiv2()
 void MarkersDlg::saktiv3()
 {
   if(aktiv3->isChecked()){
-    wobbeldaten3.mess.daten_enable = TRUE;
+    wobbeldaten3.mess.daten_enable = true;
   }else{
-    wobbeldaten3.mess.daten_enable = FALSE;
+    wobbeldaten3.mess.daten_enable = false;
   }
   //emit warneichkorr();
   emit wkmsendwobbel(wobbeldaten3);
@@ -930,9 +925,9 @@ void MarkersDlg::saktiv3()
 void MarkersDlg::saktiv4()
 {
   if(aktiv4->isChecked()){
-    wobbeldaten4.mess.daten_enable = TRUE;
+    wobbeldaten4.mess.daten_enable = true;
   }else{
-    wobbeldaten4.mess.daten_enable = FALSE;
+    wobbeldaten4.mess.daten_enable = false;
   }
   //emit warneichkorr();
   emit wkmsendwobbel(wobbeldaten4);
@@ -941,9 +936,9 @@ void MarkersDlg::saktiv4()
 void MarkersDlg::saktiv5()
 {
   if(aktiv5->isChecked()){
-    wobbeldaten5.mess.daten_enable = TRUE;
+    wobbeldaten5.mess.daten_enable = true;
   }else{
-    wobbeldaten5.mess.daten_enable = FALSE;
+    wobbeldaten5.mess.daten_enable = false;
   }
   //emit warneichkorr();
   emit wkmsendwobbel(wobbeldaten5);
@@ -952,9 +947,9 @@ void MarkersDlg::saktiv5()
 void MarkersDlg::saktiv6()
 {
   if(aktiv6->isChecked()){
-    wobbeldaten6.mess.daten_enable = TRUE;
+    wobbeldaten6.mess.daten_enable = true;
   }else{
-    wobbeldaten6.mess.daten_enable = FALSE;
+    wobbeldaten6.mess.daten_enable = false;
   }
   //emit warneichkorr();
   emit wkmsendwobbel(wobbeldaten6);
@@ -969,12 +964,12 @@ void MarkersDlg::suebergabe(const TSweep &awobbel, const QString &dateiname)
   //wobbeldaten.dbshift1 = 0.0;
   //wobbeldaten.dbshift2 = 0.0;
   //keine Eichkorrektur
-  //wobbeldaten.beichkorrk1 = FALSE;
-  //wobbeldaten.beichkorrk2 = FALSE;
+  //wobbeldaten.beichkorrk1 = false;
+  //wobbeldaten.beichkorrk2 = false;
   //===================
-  wobbeldaten.mess.daten_enable = TRUE;
-  wobbeldaten.bhintergrund = TRUE;
-  //  wobbeldaten.bhintergrund = FALSE;
+  wobbeldaten.mess.daten_enable = true;
+  wobbeldaten.bhintergrund = true;
+  //  wobbeldaten.bhintergrund = false;
   //  Beschreibung
   if(dateiname.isEmpty()){
     sz = zeit.toString("dd.MM.yyyy hh:mm:ss");
@@ -990,10 +985,10 @@ void MarkersDlg::suebergabe(const TSweep &awobbel, const QString &dateiname)
       wobbeldaten1.penkanal2 = pen2;
       s = tr("Graph 1: ") + sz;
       labelkanal1->setText(s);
-      checkboxk11->setEnabled(TRUE);
-      checkboxk12->setEnabled(TRUE);
-      aktiv1->setEnabled(TRUE);
-      save1->setEnabled(TRUE);
+      checkboxk11->setEnabled(true);
+      checkboxk12->setEnabled(true);
+      aktiv1->setEnabled(true);
+      save1->setEnabled(true);
       checkboxk11->setChecked(wobbeldaten.bkanal1);
       checkboxk12->setChecked(wobbeldaten.bkanal2);
       saktiv1();
@@ -1006,10 +1001,10 @@ void MarkersDlg::suebergabe(const TSweep &awobbel, const QString &dateiname)
       wobbeldaten2.penkanal2 = pen2;
       s = tr("Graph 2: ") + sz;
       labelkanal2->setText(s);
-      checkboxk21->setEnabled(TRUE);
-      checkboxk22->setEnabled(TRUE);
-      aktiv2->setEnabled(TRUE);
-      save2->setEnabled(TRUE);
+      checkboxk21->setEnabled(true);
+      checkboxk22->setEnabled(true);
+      aktiv2->setEnabled(true);
+      save2->setEnabled(true);
       checkboxk21->setChecked(wobbeldaten.bkanal1);
       checkboxk22->setChecked(wobbeldaten.bkanal2);
       saktiv2();
@@ -1022,10 +1017,10 @@ void MarkersDlg::suebergabe(const TSweep &awobbel, const QString &dateiname)
       wobbeldaten3.penkanal2 = pen2;
       s = tr("Graph 3: ") + sz;
       labelkanal3->setText(s);
-      checkboxk31->setEnabled(TRUE);
-      checkboxk32->setEnabled(TRUE);
-      aktiv3->setEnabled(TRUE);
-      save3->setEnabled(TRUE);
+      checkboxk31->setEnabled(true);
+      checkboxk32->setEnabled(true);
+      aktiv3->setEnabled(true);
+      save3->setEnabled(true);
       checkboxk31->setChecked(wobbeldaten.bkanal1);
       checkboxk32->setChecked(wobbeldaten.bkanal2);
       saktiv3();
@@ -1038,10 +1033,10 @@ void MarkersDlg::suebergabe(const TSweep &awobbel, const QString &dateiname)
       wobbeldaten4.penkanal2 = pen2;
       s = tr("Graph 4: ") + sz;
       labelkanal4->setText(s);
-      checkboxk41->setEnabled(TRUE);
-      checkboxk42->setEnabled(TRUE);
-      aktiv4->setEnabled(TRUE);
-      save4->setEnabled(TRUE);
+      checkboxk41->setEnabled(true);
+      checkboxk42->setEnabled(true);
+      aktiv4->setEnabled(true);
+      save4->setEnabled(true);
       checkboxk41->setChecked(wobbeldaten.bkanal1);
       checkboxk42->setChecked(wobbeldaten.bkanal2);
       saktiv4();
@@ -1054,10 +1049,10 @@ void MarkersDlg::suebergabe(const TSweep &awobbel, const QString &dateiname)
       wobbeldaten5.penkanal2 = pen2;
       s = tr("Graph 5: ") + sz;
       labelkanal5->setText(s);
-      checkboxk51->setEnabled(TRUE);
-      checkboxk52->setEnabled(TRUE);
-      aktiv5->setEnabled(TRUE);
-      save5->setEnabled(TRUE);
+      checkboxk51->setEnabled(true);
+      checkboxk52->setEnabled(true);
+      aktiv5->setEnabled(true);
+      save5->setEnabled(true);
       checkboxk51->setChecked(wobbeldaten.bkanal1);
       checkboxk52->setChecked(wobbeldaten.bkanal2);
       saktiv5();
@@ -1070,10 +1065,10 @@ void MarkersDlg::suebergabe(const TSweep &awobbel, const QString &dateiname)
       wobbeldaten6.penkanal2 = pen2;
       s = tr("Graph 6: ") + sz;
       labelkanal6->setText(s);
-      checkboxk61->setEnabled(TRUE);
-      checkboxk62->setEnabled(TRUE);
-      aktiv6->setEnabled(TRUE);
-      save6->setEnabled(TRUE);
+      checkboxk61->setEnabled(true);
+      checkboxk62->setEnabled(true);
+      aktiv6->setEnabled(true);
+      save6->setEnabled(true);
       checkboxk61->setChecked(wobbeldaten.bkanal1);
       checkboxk62->setChecked(wobbeldaten.bkanal2);
       saktiv6();
