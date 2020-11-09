@@ -119,7 +119,6 @@ private:
     QString programpath;
     QString infotext;
     QString infoversion;
-    QString infobuildnum;
 
     QMenu *fileMenu;
     QMenu *menuView;
