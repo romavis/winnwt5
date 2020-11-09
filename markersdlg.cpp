@@ -36,11 +36,7 @@
 
 #include "configfile.h"
 #include "markersdlg.h"
-#ifdef Q_OS_WIN
-    #include "modem_win.h"
-#else
-    #include "modem_lin.h"
-#endif
+#include "modem.hpp"
 //#include "tooltipwkm.h"
 //#include "tooltipodlg.h"
 

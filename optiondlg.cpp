@@ -38,11 +38,7 @@
 #include "optiondlg.h"
 #include "sweepcurvewidget.h"
 
-#ifdef Q_OS_WIN
-    #include "modem_win.h"
-#else
-    #include "modem_lin.h"
-#endif
+#include "modem.hpp"
 
 
 //#####################################################################################

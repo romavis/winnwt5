@@ -19,6 +19,8 @@ set(NWT_SOURCES
     probedlg.cpp 
     firmwaredlg.cpp 
     Attenuator.cpp
+    # Select QSerialPort-based modem impl
+    modem_qsp.cpp
 )
 # List of headers (needed for MOC)
 set(NWT_HEADERS
@@ -38,14 +40,6 @@ set(NWT_HEADERS
     build.h
     modem.hpp
 )
-# Modem implementation
-if(WIN32)
-    list(APPEND NWT_SOURCES modem_win.cpp)
-elseif(UNIX)
-    list(APPEND NWT_SOURCES modem_lin.cpp)
-else()
-    message(FATAL_ERROR "OS ${CMAKE_SYSTEM_NAME} not supported")
-endif()
 # Resources
 qt5_add_resources(NWT_SOURCES icon.qrc)
 # Translations
