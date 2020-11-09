@@ -1,0 +1,4 @@
+# Default CMake buildroot
+build/
+# VSCode files
+.vscode/
