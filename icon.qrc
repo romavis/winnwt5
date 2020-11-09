@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/appicon.png</file>
+        <file>images/appicon2.png</file>
+        <file>images/option.png</file>
+        <file>images/label.png</file>
+        <file>images/info.png</file>
+        <file>images/open.png</file>
+        <file>images/save.png</file>
+        <file>images/hline.png</file>
+        <file>images/exit.png</file>
+        <file>images/cut.png</file>
+        <file>images/fmarker.png</file>
+        <file>images/open_ch1.png</file>
+        <file>images/open_ch2.png</file>
+        <file>images/print.png</file>
+        <file>images/printpdf.png</file>
+        <file>images/profile.png</file>
+        <file>images/saveimage.png</file>
+        <file>images/width.png</file>
+        <file>images/zmatch1.png</file>
+        <file>images/zmatch2.png</file>
+    </qresource>
+</RCC>
